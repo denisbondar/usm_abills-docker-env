@@ -1,0 +1,15 @@
+version: '3.2'
+
+services:
+
+  usm_abills:
+    build:
+      context: ./usm_abills
+    environment:
+      TZ: 'Europe/Zaporozhye'
+    volumes:
+      - ./usm_abills/module:/app
+      - ./usm_abills/log:/var/log/usm_abills
+    # Remove two lines below if used standalone container without userside bundle
+    networks:
+      - internal

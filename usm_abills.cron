@@ -1,0 +1,1 @@
+*/10 * * * * root    docker-compose -f /path/to/userside/docker-compose.yml run --rm usm_abills php usm_abills.php &> /dev/null
