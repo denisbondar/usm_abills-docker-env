@@ -1,15 +1,13 @@
-version: '3.2'
-
 services:
 
   usm_abills:
     build:
-      context: ./usm_abills
-    environment:
-      TZ: 'Europe/Zaporozhye'
+      context: ${USERSIDE_BASE_DIR}/usm_abills
     volumes:
-      - ./usm_abills/module:/app
-      - ./usm_abills/log:/var/log/usm_abills
-    # Remove two lines below if used standalone container without userside bundle
+      - ${USERSIDE_BASE_DIR}/usm_abills/module:/app
+      - ${USERSIDE_BASE_DIR}/usm_abills/log:/var/log/usm_abills
+      - ${USERSIDE_BASE_DIR}/config/datetime.ini:/usr/local/etc/php/conf.d/timezone.ini
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     networks:
       - internal
